@@ -1,0 +1,9 @@
+[package]
+name = "ipv6-ddn"
+version = "0.1.0"
+edition = "2024"
+description = "A library to convert between Standard IPv6 (Hex) and IPv6 Decimal Dot Notation (DDN)."
+license = "MPL-2.0"
+
+[dependencies]
+# No external dependencies
