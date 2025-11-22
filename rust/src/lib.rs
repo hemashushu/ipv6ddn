@@ -100,7 +100,7 @@ pub fn from_standard(addr: &Ipv6Addr) -> Result<String, String> {
 /// Returns an error string if the input format is invalid or segments are out of range.
 pub fn to_standard_str(ddn_ip: &str) -> Result<String, String> {
     // Ipv6Addr::to_string() automatically applies canonical RFC 5952 compression
-    to_standard(ddn_ip).and_then(|addr| Ok(addr.to_string()))
+    to_standard(ddn_ip).map(|addr| addr.to_string())
 }
 
 pub fn to_standard(ddn_ip: &str) -> Result<Ipv6Addr, String> {
@@ -169,9 +169,7 @@ fn expand_ddn(ip_str: &str) -> Result<[u16; 8], String> {
         }
 
         // Fill Zeros
-        for _ in 0..missing {
-            segments.push(0);
-        }
+        segments.append(&mut vec![0u16; missing]);
 
         // Parse Right
         for s in right {
@@ -212,8 +210,8 @@ fn compress_segments(segments: &[u16; 8], sep: &str, double_sep: &str, hex: bool
     let mut curr_len = 0;
     let mut curr_start = -1;
 
-    for i in 0..8 {
-        if segments[i] == 0 {
+    for (i, item) in segments.iter().enumerate() {
+        if *item == 0 {
             if curr_len == 0 {
                 curr_start = i as i32;
             }
