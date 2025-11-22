@@ -1,6 +1,6 @@
 {
     "name": "ipv6-ddn",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "description": "A library to convert between Standard IPv6 (Hex) and IPv6 Decimal Dot Notation (DDN) with canonicalization support.",
     "main": "ipv6_ddn.js",
     "scripts": {

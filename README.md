@@ -20,7 +20,8 @@
   - [8.1 Ambiguity with IPv4](#81-ambiguity-with-ipv4)
   - [8.2 Buffer Handling](#82-buffer-handling)
 - [9. Libraries](#9-libraries)
-- [10. License](#10-license)
+- [10. Specification](#10-specification)
+- [11. License](#11-license)
 
 <!-- /code_chunk_output -->
 
@@ -156,9 +157,12 @@ Unlike hexadecimal (max 4 chars per segment), decimal segments can have up to 5 
 
 - JavaScript: [ipv6-ddn](https://www.npmjs.com/package/ipv6-ddn)
 - Rust: [ipv6-ddn](https://crates.io/crates/ipv6-ddn)
-- Source code: [GitHub Repository](https://github.com/hemashushu/ipv6ddn)
 
-## 10. License
+## 10. Specification
+
+[Specification v1.0.0](https://github.com/hemashushu/ipv6ddn)
+
+## 11. License
 
 This document is provided under the Creative Commons Attribution 4.0 International (CC BY 4.0) License. This license enables reusers to distribute, remix, adapt, and build upon the material in any medium or format, so long as attribution is given to the creator (Hemashushu <hippospark@gmail.com>). The license allows for commercial use.
 

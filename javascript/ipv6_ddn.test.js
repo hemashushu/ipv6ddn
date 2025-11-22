@@ -126,8 +126,8 @@ function runSuite() {
 
     total++;
     passed += assertEq(
-        "get_type: IPv4 (Standard)",
-        converter.get_type("192.168.1.1"),
+        "getType: IPv4 (Standard)",
+        converter.getType("192.168.1.1"),
         "ipv4"
     )
         ? 1
@@ -135,8 +135,8 @@ function runSuite() {
 
     total++;
     passed += assertEq(
-        "get_type: IPv6 Standard",
-        converter.get_type("2001:db8::1"),
+        "getType: IPv6 Standard",
+        converter.getType("2001:db8::1"),
         "ipv6"
     )
         ? 1
@@ -144,8 +144,8 @@ function runSuite() {
 
     total++;
     passed += assertEq(
-        "get_type: IPv6 DDN",
-        converter.get_type("8193.3512..1"),
+        "getType: IPv6 DDN",
+        converter.getType("8193.3512..1"),
         "ipv6_ddn"
     )
         ? 1
@@ -153,8 +153,8 @@ function runSuite() {
 
     total++;
     passed += assertEq(
-        "get_type: Invalid/Unknown (Garbage)",
-        converter.get_type("not.an.ip.address"),
+        "getType: Invalid/Unknown (Garbage)",
+        converter.getType("not.an.ip.address"),
         "unknown"
     )
         ? 1
@@ -162,9 +162,9 @@ function runSuite() {
 
     total++;
     passed += assertEq(
-        "get_type: Ambiguous Dots (IPv4 vs DDN)",
+        "getType: Ambiguous Dots (IPv4 vs DDN)",
         // 0.0.0.0 is valid IPv4. It is NOT valid DDN (needs 8 segments or ..)
-        converter.get_type("0.0.0.0"),
+        converter.getType("0.0.0.0"),
         "ipv4"
     )
         ? 1
@@ -172,8 +172,8 @@ function runSuite() {
 
     total++;
     passed += assertEq(
-        "is_ddn: Valid DDN",
-        converter.is_ddn("1.2.3.4.5.6.7.8"),
+        "isDDN: Valid DDN",
+        converter.isDDN("1.2.3.4.5.6.7.8"),
         true
     )
         ? 1
@@ -181,8 +181,8 @@ function runSuite() {
 
     total++;
     passed += assertEq(
-        "is_ddn: Invalid DDN (Segment > 65535)",
-        converter.is_ddn("70000.0..1"),
+        "isDDN: Invalid DDN (Segment > 65535)",
+        converter.isDDN("70000.0..1"),
         false
     )
         ? 1
@@ -190,8 +190,8 @@ function runSuite() {
 
     total++;
     passed += assertEq(
-        "is_ddn: IPv4 is not DDN",
-        converter.is_ddn("192.168.1.1"),
+        "isDDN: IPv4 is not DDN",
+        converter.isDDN("192.168.1.1"),
         false
     )
         ? 1

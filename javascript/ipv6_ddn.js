@@ -31,17 +31,17 @@
 
         /**
          * Detects the type of IP address format.
-         * @param {string} ipaddr_text
+         * @param {string} ipaddrText
          * @returns {"ipv4"|"ipv6"|"ipv6_ddn"|"unknown"}
          */
-        get_type(ipaddr_text) {
-            if (!ipaddr_text || typeof ipaddr_text !== "string")
+        getType(ipaddrText) {
+            if (!ipaddrText || typeof ipaddrText !== "string")
                 return "unknown";
 
             // 1. Check for IPv6 Standard (Must contain colon)
-            if (ipaddr_text.includes(":")) {
+            if (ipaddrText.includes(":")) {
                 try {
-                    this.fromStandard(ipaddr_text);
+                    this.fromStandard(ipaddrText);
                     return "ipv6";
                 } catch (e) {
                     return "unknown";
@@ -49,12 +49,12 @@
             }
 
             // 2. Check for IPv6 DDN (Must pass DDN validation)
-            if (this.is_ddn(ipaddr_text)) {
+            if (this.isDDN(ipaddrText)) {
                 return "ipv6_ddn";
             }
 
             // 3. Check for IPv4 (4 octets, 0-255)
-            if (this._isIPv4(ipaddr_text)) {
+            if (this._isIPv4(ipaddrText)) {
                 return "ipv4";
             }
 
@@ -63,12 +63,12 @@
 
         /**
          * Checks if the text is a valid IPv6 DDN string.
-         * @param {string} ipaddr_text
+         * @param {string} ipaddrText
          * @returns {boolean}
          */
-        is_ddn(ipaddr_text) {
+        isDDN(ipaddrText) {
             try {
-                this.toStandard(ipaddr_text);
+                this.toStandard(ipaddrText);
                 return true;
             } catch (e) {
                 return false;

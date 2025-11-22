@@ -2,6 +2,27 @@
 
 A lightweight, zero-dependency JavaScript library to convert IPv6 addresses between the standard Hexadecimal format and the experimental Decimal Dot Notation (IPv6-DDN).
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=4 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [What is IPv6-DDN?](#what-is-ipv6-ddn)
+- [Features](#features)
+- [Usage](#usage)
+  - [Node.js](#nodejs)
+  - [Browser](#browser)
+- [API Reference](#api-reference)
+  - [`fromStandard(standardIP)`](#fromstandardstandardip)
+  - [`toStandard(ddnIP)`](#tostandardddnip)
+  - [`getType(ipaddrText)`](#gettypeipaddrtext)
+  - [`isDDN(ipaddrText)`](#isddnipaddrtext)
+- [Examples](#examples)
+- [Running Tests](#running-tests)
+- [Specification](#specification)
+- [License](#license)
+
+<!-- /code_chunk_output -->
+
 ## What is IPv6-DDN?
 
 IPv6 Decimal Dot Notation (IPv6-DDN) is a proposed format designed to make IPv6 addresses more readable for humans familiar with IPv4.
@@ -43,7 +64,7 @@ console.log(std); // Output: "2001:db8::1"
 ```html
 <script src="ipv6_ddn.js"></script>
 <script>
-    const type = IPv6DDN.get_type("8193.3512..1");
+    const type = IPv6DDN.getType("8193.3512..1");
     if (type === "ipv6_ddn") {
         console.log("Valid DDN Address detected!");
     }
@@ -68,22 +89,22 @@ Converts an IPv6-DDN string (Decimal.Dot) to Standard IPv6 notation.
 - Returns `(String)`: The canonical Standard IPv6 string.
 - Throws: Error if the input format is invalid or segments exceed 65535.
 
-### `get_type(ipaddr_text)`
+### `getType(ipaddrText)`
 
 Detects the format of a given IP address string.
 
-- ipaddr_text `(String)`: The IP string to analyze.
+- ipaddrText `(String)`: The IP string to analyze.
 - Returns `(String)`:
   - `"ipv4"`: Valid standard IPv4.
   - `"ipv6"`: Valid standard IPv6.
   - `"ipv6_ddn"`: Valid IPv6 Decimal Dot Notation.
   - `"unknown"`: Invalid or unrecognized format.
 
-### `is_ddn(ipaddr_text)`
+### `isDDN(ipaddrText)`
 
 Checks if a string is a valid IPv6-DDN address.
 
-- ipaddr_text `(String)`: The text to check.
+- ipaddrText `(String)`: The text to check.
 - Returns `(Boolean)`: `true` if valid, `false` otherwise.
 
 ## Examples
@@ -94,10 +115,22 @@ Checks if a string is a valid IPv6-DDN address.
 | `fromStandard` | `2001:db8:0:0:1:0:0:1` | `8193.3512.0.0.1..1` |
 | `toStandard`   | `..`          | `::`   |
 | `toStandard`   | `0010..1`     | `a::1` |
-| `get_type`     | `192.168.1.1` | `ipv4` |
+| `getType`      | `192.168.1.1` | `ipv4` |
+
+## Running Tests
+
+This library includes a comprehensive unit test suite covering edge cases, compression rules, and error handling.
+
+```bash
+npm run test
+```
+
+## Specification
+
+[Specification v1.0.0](https://github.com/hemashushu/ipv6ddn)
 
 ## License
 
-This project is licensed under the Mozilla Public License 2.0 (MPL 2.0).
+This project is licensed under the Mozilla Public License 2.0 (MPL 2.0) additional terms.
 
 For more details, see the [LICENSE](./LICENSE) and [LICENSE.additional](./LICENSE.additional) files.
